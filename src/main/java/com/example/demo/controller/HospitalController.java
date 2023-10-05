@@ -18,6 +18,7 @@ public class HospitalController {
     @Autowired
     HospitalRepository hospitalRepository;
 
+    @CrossOrigin(value = "*")
     @GetMapping("/hospital/all")
     public ResponseEntity<List<Hospital>> getAllProducts() {
         return new ResponseEntity<>(hospitalRepository.findAll(), HttpStatus.OK);
@@ -29,10 +30,21 @@ public class HospitalController {
         if(hospitalO.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(hospitalO.get(), HttpStatus.OK);
     }
+    @CrossOrigin(value = "*")
     @PostMapping("/hospital/")
     public ResponseEntity<Hospital> saveProduct (@RequestBody @Valid Hospital hospital) {
         return new ResponseEntity<>(hospitalRepository.save(hospital), HttpStatus.CREATED);
     }
+    @CrossOrigin(value = "*")
+    @PutMapping("/hospital/{id}")
+    public ResponseEntity<Hospital>
+    updateProduct (@PathVariable(value = "id") UUID id, @RequestBody @Valid Hospital hospital) {
+        Optional<Hospital> productO = hospitalRepository.findById(id);
+        if (productO.isEmpty()) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        hospital.setId(id);
+        return new ResponseEntity<>(hospitalRepository.save(hospital), HttpStatus.OK);
+    }
+    @CrossOrigin(value = "*")
     @DeleteMapping("/hospital/{id}")
     public ResponseEntity<?>
     deleteProduct(@PathVariable(value = "id") UUID id){
