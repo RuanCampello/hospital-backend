@@ -17,17 +17,17 @@ public class Hospital implements Serializable {
     @GeneratedValue
     private UUID id;
     @NotNull
-    @Pattern(regexp = "[^0-9]+", message = "Name cannot contain numbers")
+    @Pattern(regexp = "[^0-9]+", message = "Nome não pode conter números")
     private String name;
     @NotEmpty
-    @Size(min = 5, message = "Address must contain at least 5 letters")
+    @Size(min = 5, message = "Endereço deve conter pelo menos 5 letras")
     private String address;
     @NotNull
-    @Pattern(regexp = "[0-9]+", message = "Phone Number cannot contain letters")
+    @Pattern(regexp = "[0-9]+", message = "Número de telefone não pode conter letras")
     private String number;
     @Column(unique = true)
-    @Size(min = 14, max = 14, message = "CNPJ length must be equal to 14")
+    @Size(min = 14, max = 14, message = "CNPJ deve conter 14 dígitos")
     @NotNull
-    @Pattern(regexp = "[0-9]+", message = "CNPJ cannot contain letters")
+    @Pattern(regexp = "[0-9]+", message = "CNPJ não pode conter letras")
     private String cnpj;
 }

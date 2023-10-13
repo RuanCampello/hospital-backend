@@ -19,11 +19,11 @@ public class PacienteController {
     PacienteRepository pacienteRepository;
 
     @CrossOrigin(value = "*")
-    @GetMapping("/paciente/all")
+    @GetMapping("/patient/all")
     public ResponseEntity<List<Paciente>> getAllProducts() {
         return new ResponseEntity<>(pacienteRepository.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/paciente{id}")
+    @GetMapping("/patient{id}")
     public ResponseEntity<Paciente>
     getOneProduct(@PathVariable(value = "id") UUID id){
         Optional<Paciente> pacienteO = pacienteRepository.findById(id);
@@ -31,12 +31,12 @@ public class PacienteController {
         return new ResponseEntity<>(pacienteO.get(), HttpStatus.OK);
     }
     @CrossOrigin(value = "*")
-    @PostMapping("/paciente/")
+    @PostMapping("/patient/")
     public ResponseEntity<Paciente> saveProduct (@RequestBody @Valid Paciente paciente) {
         return new ResponseEntity<>(pacienteRepository.save(paciente), HttpStatus.CREATED);
     }
     @CrossOrigin(value = "*")
-    @PutMapping("/paciente/{id}")
+    @PutMapping("/patient/{id}")
     public ResponseEntity<Paciente>
     updateProduct (@PathVariable(value = "id") UUID id, @RequestBody @Valid Paciente paciente) {
         Optional<Paciente> productO = pacienteRepository.findById(id);
@@ -45,7 +45,7 @@ public class PacienteController {
         return new ResponseEntity<>(pacienteRepository.save(paciente), HttpStatus.OK);
     }
     @CrossOrigin(value = "*")
-    @DeleteMapping("/paciente/{id}")
+    @DeleteMapping("/patient/{id}")
     public ResponseEntity<?>
     deleteProduct(@PathVariable(value = "id") UUID id){
         Optional<Paciente> productO = pacienteRepository.findById(id);
