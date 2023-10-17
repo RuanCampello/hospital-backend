@@ -23,7 +23,7 @@ public class PacienteController {
     public ResponseEntity<List<Paciente>> getAllProducts() {
         return new ResponseEntity<>(pacienteRepository.findAll(), HttpStatus.OK);
     }
-    @GetMapping("/patient{id}")
+    @GetMapping("/patient/{id}")
     public ResponseEntity<Paciente>
     getOneProduct(@PathVariable(value = "id") UUID id){
         Optional<Paciente> pacienteO = pacienteRepository.findById(id);
