@@ -18,17 +18,17 @@ public class Paciente implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;
+    @Column(unique = true)
     @NotNull
     @Size(min = 11, max = 11, message = "CPF deve conter 11 dígitos")
     @Pattern(regexp = "[0-9]+", message = "CPF não pode conter letras")
-    @Column(unique = true)
     private String cpf;
     @NotNull
     @Pattern(regexp = "[^0-9]+", message = "Nome não pode conter números")
     @Size(min = 3, message = "Nome deve conter pelo menos 3 letras")
     private String name;
     @NotNull
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @NotNull
     @Pattern(regexp = "[0-9]+", message = "Número do telefone pessoal não pode conter letras")
