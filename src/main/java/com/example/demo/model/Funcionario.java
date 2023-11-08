@@ -30,7 +30,7 @@ public class Funcionario implements Serializable {
     @Size(min = 3, message = "Nome deve conter pelo menos 3 letras")
     private String name;
     @NotNull
-    @JsonFormat(pattern = "dd-MM-yyyy")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date date;
     @NotNull
     @Pattern(regexp = "[0-9]+", message = "Número do telefone não pode conter letras")
