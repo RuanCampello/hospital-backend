@@ -1,6 +1,6 @@
 # Hospital Management System API
 
-This API is designed to manage patient information in a hospital setting. It is built using Spring Boot and connected to a PostgreSQL database.
+This API is designed to manage hospital, patient, teams and employees information in a hospital setting. It is built using Spring Boot and connected to a PostgreSQL database.
 
 ## Base URL
 https://localhost:8080/
